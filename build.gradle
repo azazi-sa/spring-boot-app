@@ -19,7 +19,7 @@ dependencies {
 //	compile('org.springframework.boot:spring-boot-starter-aop')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 //	compile('org.springframework.boot:spring-boot-starter-data-redis')
-//	compile('org.springframework.boot:spring-boot-starter-cache')
+	compile('org.springframework.boot:spring-boot-starter-cache')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-actuator")
@@ -39,6 +39,8 @@ dependencies {
 	//runtime 'org.bouncycastle:bcprov-jdk15on:1.60'
 	// Uncomment below line if you want to use gson
 	//runtime 'io.jsonwebtoken:jjwt-gson:0.11.2'
+
+	compile group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '2.8.5'
 
 	testCompile('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
