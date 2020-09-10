@@ -26,7 +26,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
 
-    @Cacheable
+    @Cacheable(unless = "#result == null")
     public Optional<Customer> getCustomerById(Long customerId) {
         log.info("Fetching customer by id: {}", customerId);
         return customerRepository.findById(customerId);
