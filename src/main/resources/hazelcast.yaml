@@ -2,5 +2,8 @@ hazelcast:
   network:
     join:
       multicast:
+        enabled: false
+      kubernetes:
         enabled: true
+        service-dns: customer-service-headless.default.svc.cluster.local
 

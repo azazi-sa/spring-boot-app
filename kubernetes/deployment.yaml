@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-api
+  labels:
+    app: customer-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-api
+  template:
+    metadata:
+      name: customer-api
+      labels:
+        app: customer-api
+    spec:
+      containers:
+        - name: customer-api
+          image: spring-boot-app_application:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 5701
+              name: hazelcast
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: 'jdbc:mysql://mysql:3306/test'
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mysql-root-password
+                  name: mysql
+            - name: SPRING_FLYWAY_URL
+              value: 'jdbc:mysql://mysql:3306/test'
+            - name: SPRING_FLYWAY_USER
+              value: root
+            - name: SPRING_FLYWAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mysql-root-password
+                  name: mysql
+      restartPolicy: Always

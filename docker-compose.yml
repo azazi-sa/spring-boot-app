@@ -28,7 +28,7 @@ services:
   application:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile.app-exploded
+      dockerfile: ./docker/Dockerfile.app
     ports:
       - 8080
       - 5701
